@@ -4,9 +4,7 @@ var Source = module.exports = function (source, name) {
   var calling = false
   return function (abort, cb) {
     if(abort) {
-      console.log("ABORT", name, abort)
       return source(abort, function (err, data) {
-        console.log("ABORTED")
         cb(err, data)
       })
     }
@@ -34,5 +32,7 @@ module.exports.sink = function (sink) {
     return sink(Source(source))
   }
 }
+
+
 
 
